@@ -51,7 +51,7 @@
                 "   'type'=> 'NumberSpinner',",
                 "   'name'=> 'Value',",
                 "   'caption'=> 'Value',",
-                "   'visible'=> false",
+                "   'visible'=> $visible",
                 "];",
 
                 "if (isset($List)) {",
