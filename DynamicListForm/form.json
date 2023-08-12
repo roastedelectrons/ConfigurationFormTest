@@ -1,0 +1,76 @@
+{
+    "elements": [
+        {
+            "caption": "List with dynamic Form",
+            "type": "List",
+            "name": "List",
+            "add": true,
+            "delete": true,
+            "rowCount": 5,
+            "columns": [
+                {
+                    "caption": "Type",
+                    "name": "Type",
+                    "width": "500px",
+                    "edit": {
+                        "type": "Select",
+                        "options": [
+                            { "caption": "Variable", "value": 0 },
+                            { "caption": "Value", "value": 1 }
+                        ]
+                    },
+                    "add": 0
+                }
+            ],
+            "values": [
+            ],
+            "form": [
+                "$form = [];",
+                
+                "$form[] = [",
+                "   'type'=> 'Select',",
+                "   'name'=> 'Type',",
+                "   'caption'=> 'Type',",
+                "   'options'=> [",
+                "       ['caption' => 'Variable', 'value'=> 0 ],",
+                "       ['caption' => 'Value', 'value' => 1 ]",
+                "   ],",
+                "   'onChange' => 'FormTest_UpdateForm($id, \"Type\", $Type);'",
+                "];", 
+
+                "$visible = ($List['Type'] == 0) ? true : false;",
+                "$form[] = [",
+                "   'type'=> 'SelectVariable',",
+                "   'name'=> 'VariableID',",
+                "   'caption'=> 'VariableID',",
+                "   'visible'=> $visible",
+                "];",
+
+                "$visible = ($List['Type'] == 1) ? true : false;",
+                "$form[] = [",
+                "   'type'=> 'NumberSpinner',",
+                "   'name'=> 'Value',",
+                "   'caption'=> 'Value',",
+                "   'visible'=> false",
+                "];",
+
+                "if (isset($List)) {",
+                "   $form[] = [",
+                "      'type'=> 'ValidationTextBox',",
+                "      'caption'=> 'List dump',",
+                "      'value' => json_encode($List)",
+                "   ];",
+                "}",
+
+                "return $form;"
+            ]
+        },
+        {
+            "type": "Button",
+            "caption": "Show List",
+            "onClick": "echo IPS_GetProperty($id, 'List');"
+        }
+    ],
+    "actions": [],
+    "status": []
+}
