@@ -1,0 +1,64 @@
+{
+    "elements": [
+        {
+            "caption": "List with nested List",
+            "type": "List",
+            "name": "List",
+            "width": "500px",
+            "add": true,
+            "delete": true,
+            "rowCount": 5,
+            "columns": [
+                {
+                    "caption": "Title",
+                    "name": "Title",
+                    "width": "300px",
+                    "add": "",
+                    "edit":{
+                        "type": "ValidationTextBox"
+                    }
+                },
+                {
+                    "caption": "NestedList",
+                    "name": "NestedList",
+                    "width": "auto",
+                    "add": "",
+                    "edit": {
+                        "type": "List",
+                        "rowCount": 5,
+                        "delete": true,
+                        "add": true,
+                        "columns":[
+                            {
+                                "caption": "Value",
+                                "name": "NestedList.Value", 
+                                "width": "100px",
+                                "add": 0,
+                                "edit": {
+                                    "type": "NumberSpinner",
+                                    "digits": 1,
+                                    "moreDigits": true
+                                }
+                            }
+                        ],
+                        "values": []
+                    }
+                }
+            ],
+            "values": [
+            ]
+        },
+        {
+            "type": "CheckBox",
+            "caption": "Kill-Switch",
+            "name": "KillSwitch"
+        },
+        {
+            "type": "Button",
+            "caption": "Show List",
+            "onClick": "print_r( IPS_GetProperty($id, 'List') );"
+        }
+    ],
+    "actions": [],
+    "status": []
+}
